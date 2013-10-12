@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using MathNet.Numerics.Statistics;
 using System.Collections.Concurrent;
+using System.Media;
 
 namespace WPFTCPIPServer
 {
@@ -160,6 +161,14 @@ namespace WPFTCPIPServer
                 "Kurtosis: " + String.Format("{0:0.0000}", descrStat.Kurtosis) + "\r\n" +
                 "Skewness: " + String.Format("{0:0.0000}", descrStat.Skewness) + "\r\n" +
                 "Sample number: " + Convert.ToString(x);
+                #endregion
+
+                #region Notification
+                if (TemperatureDouble > 2.0)
+                {
+                    SoundPlayer snd = new SoundPlayer(Properties.Resources.tada);
+                    snd.Play();
+                }
                 #endregion
 
                 x++;
